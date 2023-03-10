@@ -3,6 +3,7 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Logo } from '../Logo';
 
 export const AppLayout = ({ children }) => {
 	const { user } = useUser();
@@ -11,17 +12,18 @@ export const AppLayout = ({ children }) => {
 		<div className="grid grid-cols-[300px_1fr] h-screen max-h-screen">
 			<div className="flex flex-col text-amber-300 overflow-hidden">
 				<div className="bg-slate-900 px-2">
-					<div>logo</div>
-					<Link href="/post/new"
-					className="bg-green-400 tracking-wider w-full text-center text-white font-bold cursor-pointer uppercase px-4 py-2 rounded-md 
-					hover:bg-green-600 transition-color active:bg-green-400 focus:outline-none focus:ring focus:ring-green-900 block">
+					<Logo />
+					<Link
+						href="/post/new"
+						className="bg-gradient-to-r from-green-300 via-blue-500 to-emerald-800 tracking-wider w-full text-center text-amber-200 font-bold cursor-pointer uppercase px-4 py-2 rounded-md hover:bg-pink-100
+					transition-color active:bg-green-400 focus:outline-none focus:ring focus:ring-white block"
+					>
 						New Post
 					</Link>
-					<Link href="/token-topup"
-					className="block mt-2 text-center">
-					<FontAwesomeIcon icon={faCoins} className="text-amber-300" />
+					<Link href="/token-topup" className="block mt-2 text-center">
+						<FontAwesomeIcon icon={faCoins} className="text-amber-300" />
 						<span className="pl-1">0 tokens available</span>
-						</Link>
+					</Link>
 				</div>
 				<div className="flex-1 overflow-auto bg-gradient-to-b from-slate-900 to-cyan-700">
 					list of posts
@@ -40,7 +42,9 @@ export const AppLayout = ({ children }) => {
 							</div>
 							<div className="flex-1">
 								<div className="font-bold">{user.email}</div>
-								<Link className="text-sm" href="/api/auth/logout">Logout</Link>
+								<Link className="text-sm" href="/api/auth/logout">
+									Logout
+								</Link>
 							</div>
 						</>
 					) : (
