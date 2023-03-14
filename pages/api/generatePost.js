@@ -1,6 +1,10 @@
+import { withApiAuthRequired } from '@auth0/nextjs-auth0';
 import {Configuration, OpenAIApi} from 'openai';
+import clientPromise from '../../lib/mongodb';
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
+	const client = await clientPromise;
+
 	const config = new Configuration({
 		apiKey: process.env.OPENAI_API_KEY,
 	});
@@ -31,4 +35,4 @@ export default async function handler(req, res) {
 
 
 	res.status(200).json({post: JSON.parse(response.data.choices[0]?.text.split('\n').join(''))});
-}
+})
