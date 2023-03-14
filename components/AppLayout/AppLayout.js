@@ -15,8 +15,7 @@ export const AppLayout = ({ children }) => {
 					<Logo />
 					<Link
 						href="/post/new"
-						className="bg-gradient-to-r from-green-300 via-blue-500 to-emerald-800 tracking-wider w-full text-center text-amber-200 font-bold cursor-pointer uppercase px-4 py-2 rounded-md hover:bg-pink-100
-					transition-color active:bg-green-400 focus:outline-none focus:ring focus:ring-white block"
+						className="btn"
 					>
 						New Post
 					</Link>
