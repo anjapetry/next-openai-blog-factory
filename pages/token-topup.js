@@ -4,7 +4,7 @@ import { AppLayout } from '../components/AppLayout/AppLayout';
 
 export default function TokenTopup() {
 	const handleClick = async () => {
-		await fetch(`api/addTokens`, { 
+		const result = await fetch(`api/addTokens`, {
 			method: 'POST',
 		});
 	};

@@ -10,13 +10,13 @@ export default async function handler(req, res) {
   const db = client.db("next-openai-blog-factory");
 
 // create upsert
-  const userProfile = await db.collection("users").updateOne({ 
+  const userProfile = await db.collection("users").updateOne({
     auth0Id: user.sub
   }, {
     $inc: {
       availableTokens: 10,
     },
-    $setOnInsert: { 
+    $setOnInsert: {
       auth0Id: user.sub,
     },
   },
