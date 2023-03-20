@@ -4,6 +4,7 @@ import { AppLayout } from '../../components/AppLayout/AppLayout';
 import clientPromise from '../../lib/mongodb';
 import { faHashtag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getAppProps } from '../../utils/getAppProps';
 
 export default function Post(props) {
 	console.log('PROPS: ', props);
@@ -72,6 +73,7 @@ export const getServerSideProps = withPageAuthRequired({
 				title: post.title,
 				metaDescription: post.metaDescription,
 				keywords: post.keywords,
+				...props,
 			}
 		}
 		}

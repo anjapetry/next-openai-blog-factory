@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { AppLayout } from '../../components/AppLayout/AppLayout';
 import { useRouter } from 'next/router';
+import { getAppProps } from '../../utils/getAppProps';
 
 export default function NewPost(props) {
 	const router = useRouter();
@@ -65,8 +66,11 @@ NewPost.getLayout = function getLayout(page, pageProps) {
 	return <AppLayout {...pageProps}>{page}</AppLayout>
 }
 
-export const getServerSideProps = withPageAuthRequired(() => {
-	return {
-		props: {},
-	};
+export const getServerSideProps = withPageAuthRequired({
+	async getServerSideProps(ctx) {
+		const props = await getAppProps(ctx);
+		return {
+			props,
+		};
+	},
 });

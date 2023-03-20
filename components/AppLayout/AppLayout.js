@@ -5,8 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Logo } from '../Logo';
 
-export const AppLayout = ({ children }) => {
+export const AppLayout = ({ children, ...rest }) => {
 	const { user } = useUser();
+	console.log('APP PROPS: ', rest);
 
 	return (
 		<div className="grid grid-cols-[300px_1fr] h-screen max-h-screen">
