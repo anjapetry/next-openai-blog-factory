@@ -7,7 +7,11 @@ export default function TokenTopup() {
 		const result = await fetch(`api/addTokens`, {
 			method: 'POST',
 		});
+		const json = await result.json();
+		console.log('RESULT: ', json);
+		window.location.href = json.session.url;
 	};
+
 
 	return (
 		<div>
